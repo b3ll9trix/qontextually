@@ -23,15 +23,21 @@ install-uv:
 		curl -LsSf https://astral.sh/uv/install.sh | sh; \
 	fi
 
-# Rule to create the sandbox and install requirements ONLY if they changed
-$(VENV)/bin/activate: requirements.txt | install-uv
+# Create the venv exactly once. Do NOT depend on requirements.txt here —
+# venv creation is orthogonal to dependency sync.
+$(VENV)/pyvenv.cfg: | install-uv
 	@echo "⚡ Building Python sandbox with uv..."
 	$(UV) venv $(VENV)
+
+# Re-sync dependencies whenever requirements.txt changes. The stamp file lets
+# Make tell whether the last sync matches the current reqs, without touching
+# venv-created files.
+$(VENV)/.deps.stamp: requirements.txt | $(VENV)/pyvenv.cfg
 	@echo "📦 Installing dependencies at lightspeed..."
 	$(UV) pip install -p $(PYTHON) -r requirements.txt
-	@touch $(VENV)/bin/activate
+	@touch $@
 
-setup: $(VENV)/bin/activate
+setup: $(VENV)/.deps.stamp
 migrate: setup
 	@echo "🗄️ Applying database migrations..."
 	$(PYTHON) db/setup.py --db db/qontextually.db --migrations migrations

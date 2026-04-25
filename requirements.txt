@@ -1,1 +1,4 @@
 sqlite-web
+sqlite-vec
+requests
+python-dotenv
