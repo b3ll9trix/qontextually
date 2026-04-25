@@ -3,9 +3,26 @@
   "checkpoint_id": "0232078906dc",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 1,
+  "checkpoints_count": 4,
   "files_touched": [
-    "db/qontextually.db"
+    ".env.example",
+    "Makefile",
+    "db/__pycache__/db.cpython-314.pyc",
+    "db/db.py",
+    "db/qontextually.db",
+    "lib/__init__.py",
+    "lib/__pycache__/__init__.cpython-314.pyc",
+    "lib/__pycache__/embeddings.cpython-314.pyc",
+    "lib/embeddings.py",
+    "migrations/003_schema_v2.sql",
+    "migrations/004_predicates_telemetry.sql",
+    "migrations/005_entity_embeddings.sql",
+    "migrations/006_source_fts.sql",
+    "migrations/007_entity_aliases.sql",
+    "migrations/008_entity_merges.sql",
+    "migrations/009_vocabulary_discovered_view.sql",
+    "migrations/010_entity_primary_alias.sql",
+    "requirements.txt"
   ],
   "sessions": [
     {
@@ -13,6 +30,12 @@
       "transcript": "/02/32078906dc/0/full.jsonl",
       "content_hash": "/02/32078906dc/0/content_hash.txt",
       "prompt": "/02/32078906dc/0/prompt.txt"
+    },
+    {
+      "metadata": "/02/32078906dc/1/metadata.json",
+      "transcript": "/02/32078906dc/1/full.jsonl",
+      "content_hash": "/02/32078906dc/1/content_hash.txt",
+      "prompt": "/02/32078906dc/1/prompt.txt"
     }
   ],
   "token_usage": {

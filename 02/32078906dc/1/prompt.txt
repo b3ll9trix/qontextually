@@ -1,0 +1,303 @@
+[search-mode]
+MAXIMIZE SEARCH EFFORT. Launch multiple background agents IN PARALLEL:
+- explore agents (codebase patterns, file structures, ast-grep)
+- librarian agents (remote repos, official docs, GitHub examples)
+Plus direct tools: Grep, ripgrep (rg), ast-grep (sg)
+NEVER stop at first result - be exhaustive.
+
+[analyze-mode]
+ANALYSIS MODE. Gather context before diving deep:
+CONTEXT GATHERING (parallel):
+- 1-2 explore agents (codebase patterns, implementations)
+- 1-2 librarian agents (if external library involved)
+- Direct tools: Grep, AST-grep, LSP for targeted searches
+
+IF COMPLEX - DO NOT STRUGGLE ALONE. Consult specialists:
+- **Oracle**: Conventional problems (architecture, debugging, complex logic)
+- **Artistry**: Non-conventional problems (different approach needed)
+
+SYNTHESIZE findings before proceeding.
+---
+MANDATORY delegate_task params: ALWAYS include load_skills=[] and run_in_background when calling delegate_task.
+Example: delegate_task(subagent_type="explore", prompt="...", run_in_background=true, load_skills=[])
+
+---
+
+I am participating in Big Berlin Hack. I am in the Qontext track. This is the description of their problem
+
+### [**Qontext**](https://qontext.ai/?utm_source=luma) - Turn fragmented company data into a context base AI can operate on
+
+**🏆 Track Prize: 1g real gold bar (1x per member) + private dinner with Qontext**
+
+- Challenge
+    
+    Most AI systems still reconstruct company reality at runtime: they pull scattered facts from mail, CRM, policies, tickets, docs, and chat, then hope the prompt is good enough. That does not scale.
+    
+    In this track, you do not start with an agent. You start with company data. We provide a simulated enterprise dataset including email, CRM, HR, policy documents, collaboration/workspace data, IT service data, and business records. Your job is to turn that raw company state into a real, inspectable context base AI can work with and collaborate on top of.
+    
+    This track starts with unstructured and semi-structured internal company data. It ends with a virtual file system plus graph that makes this company legible to both machines and humans.
+    
+    Your Goal:
+    Build a system that turns the dataset into a structured company memory:
+    
+    - a virtual file system that documents the business: static data (employees, customers, products), procedural knowledge (processes, SOPs, rules), and trajectory information (tasks, projects, progress)
+    - explicit references both inside and outside the graph: links to other files, and links to the underlying source records where the information comes from
+    - interface(s) that enable AI systems to efficiently retrieve context and both business users and AI systems to inspect, validate, edit, and extend the company memory
+    
+    Criteria for a strong solution:
+    
+    - generalize beyond the provided dataset and data format
+    - resolve easy information conflicts automatically and involve humans where ambiguity actually matters
+    - preserve provenance at the fact level and update automatically when source facts change
+    
+    This is not a challenge about dumping markdown into folders or building a documentation chatbot. It is about designing a context base that is explainable, editable, robust under change, and useful in practice. Involve humans when it matters, and take over their work as much as possible where it does not.
+    
+    **Other Product Thoughts**
+    
+    - cover both graph construction and retrieval
+    - treat the virtual file system as a product surface, not just storage
+    - optimize for long-term maintainability by humans and machines 
+
+
+I have come with this plan
+
+---
+
+[search-mode]
+MAXIMIZE SEARCH EFFORT. Launch multiple background agents IN PARALLEL:
+- explore agents (codebase patterns, file structures, ast-grep)
+- librarian agents (remote repos, official docs, GitHub examples)
+Plus direct tools: Grep, ripgrep (rg), ast-grep (sg)
+NEVER stop at first result - be exhaustive.
+
+[analyze-mode]
+ANALYSIS MODE. Gather context before diving deep:
+CONTEXT GATHERING (parallel):
+- 1-2 explore agents (codebase patterns, implementations)
+- 1-2 librarian agents (if external library involved)
+- Direct tools: Grep, AST-grep, LSP for targeted searches
+
+IF COMPLEX - DO NOT STRUGGLE ALONE. Consult specialists:
+- **Oracle**: Conventional problems (architecture, debugging, complex logic)
+- **Artistry**: Non-conventional problems (different approach needed)
+
+SYNTHESIZE findings before proceeding.
+---
+MANDATORY delegate_task params: ALWAYS include load_skills=[] and run_in_background when calling delegate_task.
+Example: delegate_task(subagent_type="explore", prompt="...", run_in_background=true, load_skills=[])
+
+---
+
+**Deadline:** Tomorrow 14:00
+**Track:** Qontext — deterministic context layer for agents
+**Goal:** Graph-as-VFS + conflict resolution + agent interface
+
+---
+
+## 🎯 Demo Script (write on paper before coding)
+
+> "Here's a messy email mentioning John. Watch our system extract facts, store them with provenance, detect a conflict with the HR record, ask a human to resolve, then watch an agent query the graph and answer a business question with citations."
+> 
+- [x]  Demo script written on paper
+- [x]  Architecture diagram sketched (excalidraw, optional but cheap)
+
+---
+
+## 📚 Pre-Build Reading (90 min — DO NOT SKIP)
+
+- [x]  GraphRAG `prompts/entity_extraction.txt` (15 min) — https://github.com/microsoft/graphrag
+- [x]  MCP quickstart, "build a server" (20 min) — https://modelcontextprotocol.io/quickstart/server
+- [x]  Truth discovery survey, first 3 pages (15 min)
+- [x]  PROV-O primer, Entity / Activity / Agent diagram (10 min) — https://www.w3.org/TR/prov-primer/
+- [x]  Setup — repo, `uv init`, schema sketch, API key, sample doc loaded (30 min)
+
+---
+
+## 🏗️ Pillar 1 — Graph + VFS Construction (Hours 0–8)
+
+### Schema and storage · h0–2
+
+- [x]  SQLite database created via `python cli.py init`
+- [x]  `entities(id, type, name, properties_json, status, created_at, updated_at)`
+- [x]  `triples(id, subject_id, predicate, object_id, object_value, object_is_entity, status, ...)`
+- [x]  `triple_sources(triple_id, source_id, confidence, extracted_at)` — many-to-many
+- [x]  `sources(id, document_path, source_type, span_start, span_end, raw_text, extracted_at)`
+- [x]  `tracked_files(path, content_hash, mtime, last_seen_at)`
+- [x]  `source_types(type, authority, description)` seeded — HR/CRM/policy/email/chat
+- [x]  `predicates(name, is_functional, occurrence_count, auto_added)` as **registry**, not constraint (no FK)
+- [x]  `entity_types(type, description)` as registry (no FK)
+- [x]  `conflicts(id, conflict_type, triple_a_id, triple_b_id, entity_a_id, entity_b_id, status, ...)`
+- [x]  `audit_log(actor, action, target_kind, target_id, payload_json, created_at)`
+- [x]  `entity_embeddings` virtual table (sqlite-vec) with graceful fallback
+- [x]  `source_fts` virtual table (FTS5, porter tokenizer)
+- [x]  Triggers for `updated_at` on entities and triples
+
+**Node types (seeded, extensible):** Person, Organization, Document, Project, Ticket, Policy, Product, Meeting, Message, Event
+**Predicates (seeded, extensible):** works_at, reports_to, manages, owns, part_of, mentions, authored, attended, references, supersedes, located_in, has_title, has_email, has_status
+
+### Extraction pipeline · h2–5
+
+- [ ]  5-min LlamaIndex spike — install, point at data, fix backend errors
+- [ ]  LlamaIndex `SimpleDirectoryReader` loading all formats in dataset
+- [ ]  Pydantic schema — `Entity`, `Triple`, `ExtractionResult` with `object_is_entity` flag
+- [ ]  GraphRAG-style extraction prompt written, with vocabulary as preference (not constraint)
+- [ ]  Structured output via tool use (no free-form JSON parsing)
+- [ ]  Haiku 4.5 / GPT-4o-mini wired up; Sonnet fallback on parse failure
+- [ ]  New predicates auto-registered with `auto_added=1` and `is_functional=0`
+- [ ]  Triples inserted with source spans into `triple_sources`
+- [ ]  Sanity check — query DB, see real entities and triples
+
+### VFS layer · h5–8
+
+- [ ]  `vfs.py` module created
+- [ ]  `list(path)` — directory listings from graph
+- [ ]  `read(path)` — content from graph or sources
+- [ ]  `search(query)` — keyword + entity match (uses FTS5)
+- [ ]  Paths computed from graph queries, not stored
+- [ ]  Manual test — `list("/people/")` returns real people
+
+**Reading while you build:**
+
+- GraphRAG indexing pipeline diagram — https://microsoft.github.io/graphrag/
+- LightRAG paper §3.1–3.2 — https://arxiv.org/abs/2410.05779
+- Letta / MemGPT memory architecture — https://www.letta.com/blog
+
+---
+
+## 🔁 Pillar 1.5 — Entity Resolution & Rolling Updates (Hours 8–11) — the demo-winner
+
+### Three-tier entity resolution
+
+- [ ]  **Tier 1** — exact match (lowercase + strip + same type)
+- [ ]  **Tier 2** — embedding similarity (text-embedding-3-small, 1536-dim, or voyage-3-lite)
+- [ ]  Embeddings stored in `entity_embeddings` virtual table on every new entity
+- [ ]  Entity text built from name + type + properties + source span
+- [ ]  Cosine sim ≥ 0.90 → auto-merge; 0.75–0.90 → queue for human; < 0.75 → new entity
+- [ ]  **Tier 3** — ambiguous matches inserted as `conflicts` rows with `conflict_type='entity_match'`
+- [ ]  Within-document deduplication before resolution
+
+### File-level rolling updates
+
+- [ ]  `ingest.py` polling loop (every 30s, scan data dir)
+- [ ]  Diff current files against `tracked_files` table (path + sha256)
+- [ ]  **ADD handler** — extract + insert with source pointer
+- [ ]  **DELETE handler** — remove `triple_sources` rows for that source
+- [ ]  Orphan logic — triple with zero remaining sources → delete or mark `status='orphaned'`
+- [ ]  **MODIFY handler** — delete-then-add composition
+- [ ]  Orphaned entities (zero triples) cleaned up too
+- [ ]  Every mutation logged to `audit_log`
+
+### Live ingest demo path
+
+- [ ]  Drop a new file → graph grows within 30s
+- [ ]  New file conflicts with existing fact → conflict surfaces
+- [ ]  Delete one of multiple sources → triple stays alive (multi-source provenance demo)
+- [ ]  Delete last source → triple orphaned/removed
+
+**Reading while you build:**
+
+- Magellan entity matching — https://github.com/anhaidgroup/py_entitymatching
+- [Dedupe.io](http://dedupe.io/) blocking + scoring concepts — https://docs.dedupe.io/en/latest/How-it-works.html
+
+---
+
+## ⚖️ Pillar 2 — Conflict Resolution (Hours 11–15)
+
+### Detection · h11–12
+
+- [ ]  On insert: check same `(subject_id, predicate)` with different object where predicate is functional
+- [ ]  Mark conflicting triples `status='conflicted'`
+- [ ]  Conflict row created with both triple ids and `conflict_type='fact'`
+- [ ]  Logged to `audit_log`
+
+### Heuristic resolution · h12–13
+
+- [ ]  Authority pulled from `source_types` table (HR=1.0, CRM=0.8, policy=0.7, email=0.4, chat=0.3, unknown=0.5)
+- [ ]  Recency score (normalized 0–1)
+- [ ]  Per-source score = `authority × confidence × recency` (multiplicative)
+- [ ]  Per-triple score = sum across all supporting `triple_sources`
+- [ ]  Auto-resolve if `winner_score − loser_score > 0.3`
+- [ ]  Mark winner `status='active'`, loser `status='superseded'`, log `scores_json`
+- [ ]  Otherwise queue for human; reason logged either way
+
+### Human-in-loop UI · h13–15
+
+- [ ]  FastAPI app running (or Streamlit if faster for you)
+- [ ]  Pending conflicts list page
+- [ ]  Detail view — both triples + sources + highlighted spans
+- [ ]  Score breakdown shown (authority × confidence × recency per source)
+- [ ]  Pick A / Pick B buttons working
+- [ ]  Free-text "actually it's X" field (cuttable)
+- [ ]  Resolution + reason written to DB on click, logged to `audit_log`
+- [ ]  **Bonus:** "discovered predicates" panel — promote auto-added predicates to functional with one click
+
+**Reading while you build:**
+
+- Yin / Han / Yu — Truth Discovery (intro + TruthFinder, ~4 pages) — https://www.cs.uic.edu/~psyu/papers/2008-tkde-truth-discovery.pdf
+- Snorkel labeling UI patterns — https://www.snorkel.org/use-cases/
+
+---
+
+## 🔌 Pillar 3 — Agent Interface (Hours 15–20)
+
+### MCP server · h15–18
+
+- [ ]  MCP Python SDK installed, hello-world server running
+- [ ]  Tool: `search_context(query)` — top-k entities and triples (FTS5 + entity match)
+- [ ]  Tool: `get_entity(name_or_id)` — entity card with properties + relationships + sources
+- [ ]  Tool: `list_path(vfs_path)` — wraps VFS
+- [ ]  Tool: `read_path(vfs_path)` — wraps VFS
+- [ ]  Tool: `get_provenance(triple_id)` — sources, spans, timestamps, confidence, conflict history
+- [ ]  Provenance inlined in every tool response
+
+### Demo agent · h18–20
+
+- [ ]  LLM with tool use configured
+- [ ]  System prompt describing the 5 tools
+- [ ]  Q1 (lookup) — "Who manages the Phoenix project?"
+- [ ]  Q2 (multi-hop) — "What policies apply to John's current project?"
+- [ ]  Q3 (conflict-aware) — "What is John's title?" — surfaces resolved conflict
+- [ ]  Q4 (post-ingest) — drop file mid-demo, agent answers using new fact
+
+**Reading while you build:**
+
+- MCP build-a-server tutorial — https://modelcontextprotocol.io/quickstart/server
+- Anthropic tool use, "tool definition" — https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview
+
+---
+
+## ✨ Polish & Demo (Hours 20–24) — RESERVE THIS TIME
+
+- [ ]  **H20–21:** README written
+- [ ]  **H20–21:** Architecture diagram (excalidraw, 10 min)
+- [ ]  **H21–22:** Seed dataset with 2–3 intentional conflicts
+- [ ]  **H22–23:** Rehearse demo end-to-end (twice, out loud)
+- [ ]  **H23–24:** Buffer for whatever broke at 3am 
+
+
+This is my plan. I am about to start the extraction pipeline. Before that I need to make some changes to the schema. I added a note regarding that right before Extraction Pipleine section. I want to complete them one by one.
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 4/9 completed, 5 remaining]
+
+Remaining tasks:
+- [in_progress] Change 4: Add source_fts virtual table (FTS5 porter) + sync triggers
+- [pending] Change 5: Add entity_aliases table for name variants
+- [pending] Change 6: Add merges audit table for entity merge history
+- [pending] Change 8: Add vocabulary_discovered view for human-in-loop promotion UI
+- [pending] Run migration + verify with sqlite .schema
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+Can you also go over the follow-ups?
