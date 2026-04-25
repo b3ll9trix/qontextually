@@ -1,0 +1,14 @@
+I'm evaluating embedding model providers for a Python project that needs to generate 512 or 1536-dim text embeddings for entity resolution. I'm considering using OpenRouter because the project already has an OpenRouter API key configured.
+
+TASK: Determine with certainty whether OpenRouter currently offers a production-grade embeddings API.
+
+Specifically answer:
+1. Does OpenRouter expose a /v1/embeddings endpoint (OpenAI-compatible)? Check their official docs at openrouter.ai/docs
+2. If yes: which embedding models are available, what are their dimensions, what are they priced at, and is this a stable production feature or experimental?
+3. If no: is there any documented path to use embeddings via OpenRouter (e.g. via a specific model slug in /v1/completions, or a beta endpoint)?
+4. What's the current (as of 2026) alternative recommended by OpenRouter themselves or their community if users need embeddings?
+
+Search their official docs, their GitHub (openrouter repo if public), recent Discord/Twitter posts, and any 2025-2026 articles discussing OpenRouter + embeddings.
+
+EXPECTED OUTPUT: A clear verdict (yes/no/partial), the exact endpoint URL and model slugs if available, and a short recommendation for the best alternative if OpenRouter doesn't support this.
+<!-- OMO_INTERNAL_INITIATOR -->
