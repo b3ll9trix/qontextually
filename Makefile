@@ -38,11 +38,13 @@ migrate: setup
 
 run: migrate
 	@echo "🚀 Starting the Qontextually extraction pipeline..."
-
+ui: setup
+	@echo "🌐 Launching the Qontext Virtual File System (Database Browser)..."
+	$(VENV)/bin/sqlite_web db/qontextually.db
 clean:
 	@echo "🧹 Sweeping up the sandbox and database..."
 	rm -rf $(VENV)
-	rm -f qontext.db
+	rm -f qontextually.db
 	rm -rf __pycache__
 	@echo "✨ Project environment is completely clean."
 
