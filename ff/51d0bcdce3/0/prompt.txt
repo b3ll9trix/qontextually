@@ -47,3 +47,9 @@ What do you mean by trace here?
 ---
 
 So, I see the API Endpoints, conflicts don't work
+
+---
+
+I get this error Something went wrong
+
+can't access property "authority", d is undefined
