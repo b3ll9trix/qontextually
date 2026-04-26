@@ -1,0 +1,21 @@
+So, I want my jurors to also use the graph out of box, instead of forcing them to use the locla chatbot. so i also have the mcp server, does it make sense to give them instruction to do this? the MCP server also is switched on with make demo?
+
+---
+
+yes
+
+---
+
+Yes, please
+
+---
+
+Also, i find that i cannot commit, because my db files are very large
+
+---
+
+which has less frictin and least code change?
+
+---
+
+yes
