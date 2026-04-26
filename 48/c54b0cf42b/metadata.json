@@ -6,9 +6,11 @@
   "checkpoints_count": 2,
   "files_touched": [
     "README.md",
+    "docs/architecture.png",
     "lib/SPIKE_FINDINGS.md",
     "lib/ingest.py",
     "lib/ingestor.py",
+    "lib/readers.py",
     "lib/schemas.py"
   ],
   "sessions": [
@@ -23,6 +25,12 @@
       "transcript": "/48/c54b0cf42b/1/full.jsonl",
       "content_hash": "/48/c54b0cf42b/1/content_hash.txt",
       "prompt": "/48/c54b0cf42b/1/prompt.txt"
+    },
+    {
+      "metadata": "/48/c54b0cf42b/2/metadata.json",
+      "transcript": "/48/c54b0cf42b/2/full.jsonl",
+      "content_hash": "/48/c54b0cf42b/2/content_hash.txt",
+      "prompt": "/48/c54b0cf42b/2/prompt.txt"
     }
   ],
   "token_usage": {
