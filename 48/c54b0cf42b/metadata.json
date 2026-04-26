@@ -8,6 +8,8 @@
     "README.md",
     "docs/architecture.png",
     "lib/SPIKE_FINDINGS.md",
+    "lib/builder/__init__.py",
+    "lib/builder/resolver.py",
     "lib/ingest.py",
     "lib/ingestor.py",
     "lib/readers.py",
@@ -31,6 +33,12 @@
       "transcript": "/48/c54b0cf42b/2/full.jsonl",
       "content_hash": "/48/c54b0cf42b/2/content_hash.txt",
       "prompt": "/48/c54b0cf42b/2/prompt.txt"
+    },
+    {
+      "metadata": "/48/c54b0cf42b/3/metadata.json",
+      "transcript": "/48/c54b0cf42b/3/full.jsonl",
+      "content_hash": "/48/c54b0cf42b/3/content_hash.txt",
+      "prompt": "/48/c54b0cf42b/3/prompt.txt"
     }
   ],
   "token_usage": {
