@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.5.6",
+  "checkpoint_id": "445d756e9fd5",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "README.md",
+    "db/qontextually.db",
+    "docs/DESIGN.md",
+    "lib/builder/resolver.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/44/5d756e9fd5/0/metadata.json",
+      "transcript": "/44/5d756e9fd5/0/full.jsonl",
+      "content_hash": "/44/5d756e9fd5/0/content_hash.txt",
+      "prompt": "/44/5d756e9fd5/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 300,
+    "cache_creation_tokens": 350216,
+    "cache_read_tokens": 13935082,
+    "output_tokens": 85046,
+    "api_call_count": 131
+  }
+}

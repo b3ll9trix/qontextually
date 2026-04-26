@@ -1,0 +1,37 @@
+So, I want my jurors to also use the graph out of box, instead of forcing them to use the locla chatbot. so i also have the mcp server, does it make sense to give them instruction to do this? the MCP server also is switched on with make demo?
+
+---
+
+yes
+
+---
+
+Yes, please
+
+---
+
+Also, i find that i cannot commit, because my db files are very large
+
+---
+
+which has less frictin and least code change?
+
+---
+
+yes
+
+---
+
+Can you update the README, under requirements? also remove things from requirements if they  are taken care by the script and does not need external installing
+
+---
+
+can we reduce the predicate scores from 0.95 to 0.90 to enable automerge
+
+---
+
+1
+
+---
+
+yes
