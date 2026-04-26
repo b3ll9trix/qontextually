@@ -10,10 +10,10 @@ Big Berlin Hack — [Qontext track](https://qontext.ai).
 
 Ingests a simulated enterprise dataset (1,322 files across HR, email, CRM, policy, tickets, chat) and turns every source record into **entities, triples, and sources** in a single SQLite DB. Five design choices make it useful to an agent, not just pretty:
 
-1. **Every triple is backed by one or more source rows.** Provenance is a column, not a hope.
-2. **Vocabulary is a registry, not a constraint.** New entity types and predicates land with `auto_added=1` for human review.
+1. **Every triple is backed by one or more source rows.** Provenance used for Truth Finding.
+2. **Expanding predicates on top of seed** New entity types and predicates land with `auto_added=1` for human review.
 3. **Entity resolution is layered.** Tier 1 alias lookup, Tier 2 embedding similarity (sqlite-vec, 1536-dim), ambiguous cases queue for a human.
-4. **Predicate resolution mirrors entity resolution.** Tier 1 normalizes case; Tier 2 KNN-merges at cosine ≥ 0.90. The [0.85 threshold is wrong for negation — see docs/DESIGN.md](docs/DESIGN.md#why-cosine-090-and-not-085-or-095).
+4. **Predicate resolution mirrors entity resolution.** Tier 1 normalizes case; Tier 2 KNN-merges at cosine ≥ 0.94. The [0.90 threshold is wrong for negation — see docs/DESIGN.md](docs/DESIGN.md#why-cosine-090-and-not-085-or-095).
 5. **Conflict-aware by design.** Functional predicates trigger conflict detection on insert; resolution uses authority × confidence × recency.
 
 Current graph: **29,152 entities**, **103,739 triples** (1.87 sources per triple on average), **20,167 sources**, **2,631 predicates**, 117 pending human-review conflicts. Full tier-1 extraction ran on ~21k chunks for ~$5 in LLM cost.
