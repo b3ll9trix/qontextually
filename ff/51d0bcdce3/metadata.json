@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.5.6",
+  "checkpoint_id": "ff51d0bcdce3",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 8,
+  "files_touched": [
+    "Makefile",
+    "db/qontextually.db",
+    "lib/builder/writer.py",
+    "requirements.txt"
+  ],
+  "sessions": [
+    {
+      "metadata": "/ff/51d0bcdce3/0/metadata.json",
+      "transcript": "/ff/51d0bcdce3/0/full.jsonl",
+      "content_hash": "/ff/51d0bcdce3/0/content_hash.txt",
+      "prompt": "/ff/51d0bcdce3/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 104,
+    "cache_creation_tokens": 72182,
+    "cache_read_tokens": 1665826,
+    "output_tokens": 19507,
+    "api_call_count": 34
+  }
+}
