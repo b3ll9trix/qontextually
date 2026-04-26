@@ -13,7 +13,7 @@ Ingests a simulated enterprise dataset (1,322 files across HR, email, CRM, polic
 1. **Every triple is backed by one or more source rows.** Provenance is a column, not a hope.
 2. **Vocabulary is a registry, not a constraint.** New entity types and predicates land with `auto_added=1` for human review.
 3. **Entity resolution is layered.** Tier 1 alias lookup, Tier 2 embedding similarity (sqlite-vec, 1536-dim), ambiguous cases queue for a human.
-4. **Predicate resolution mirrors entity resolution.** Tier 1 normalizes case; Tier 2 KNN-merges at cosine ≥ 0.95. The [0.85 threshold is wrong for negation — see docs/DESIGN.md](docs/DESIGN.md#why-cosine-095-and-not-085).
+4. **Predicate resolution mirrors entity resolution.** Tier 1 normalizes case; Tier 2 KNN-merges at cosine ≥ 0.90. The [0.85 threshold is wrong for negation — see docs/DESIGN.md](docs/DESIGN.md#why-cosine-090-and-not-085-or-095).
 5. **Conflict-aware by design.** Functional predicates trigger conflict detection on insert; resolution uses authority × confidence × recency.
 
 Current graph: **29,152 entities**, **103,739 triples** (1.87 sources per triple on average), **20,167 sources**, **2,631 predicates**, 117 pending human-review conflicts. Full tier-1 extraction ran on ~21k chunks for ~$5 in LLM cost.
@@ -35,7 +35,7 @@ Two lanes meet at the graph: **data-flow** (ingest → extract → write) and **
 | `lib/schemas.py` | Pydantic contract: `Entity`, `Triple`, `ExtractionResult`. Ten validators catch malformed LLM output before any write. |
 | `lib/extractor.py` | Three-tier cascading extractor: Mistral-Nemo → Qwen3 → Claude Haiku (strict, with schema patching for Anthropic). Every attempt logged to `audit_log`. |
 | `lib/builder/writer.py` | Atomic graph write with Tier-1 entity resolution. Normalizes predicate case, coerces LLM synonyms (`Employee→Person`, `Company→Organization`), dedups triples with `triple_sources` linking. |
-| `lib/builder/resolver.py` | Tier-2 predicate resolution. Embeds each auto-discovered predicate with usage context, KNN-merges at cosine ≥ 0.95; ambiguous band queues for review. |
+| `lib/builder/resolver.py` | Tier-2 predicate resolution. Embeds each auto-discovered predicate with usage context, KNN-merges at cosine ≥ 0.90; ambiguous band queues for review. |
 | `lib/ingest.py` | Orchestrator. Walks the dataset, classifies tier-1/tier-2, runs concurrent extraction, resumes from `audit_log`. |
 | `lib/embeddings.py` | OpenRouter embeddings client. Writes to `entity_embeddings` + sqlite-vec KNN mirror. |
 | `db/db.py` | Single connection chokepoint. Loads sqlite-vec, creates vec0 tables idempotently. |

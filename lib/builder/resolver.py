@@ -85,7 +85,18 @@ def _build_embedding_input(predicate: str, description: str | None, usage: str) 
 
 
 def _embed_and_store_predicate(conn, predicate: str, dim: int, model: str) -> bool:
-    """Compute embedding + usage context, write to both tables. True on success."""
+    """Compute embedding + usage context, write to both tables. True on success.
+
+    Idempotent fast-path: if a row already exists in `predicate_embeddings` with
+    the same (model, dim), skip the API call. Lets `resolve_all()` re-run cheaply
+    after a threshold change without re-paying 2,631 embedding calls."""
+    existing = conn.execute(
+        "SELECT 1 FROM predicate_embeddings WHERE predicate = ? AND model = ? AND dim = ?",
+        (predicate, model, dim),
+    ).fetchone()
+    if existing is not None:
+        return True
+
     row = conn.execute(
         "SELECT description FROM predicates WHERE name = ?", (predicate,)
     ).fetchone()
