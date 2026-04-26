@@ -1,0 +1,3737 @@
+Next, I want to install llama-index for the extraction.
+
+---
+
+So, is this step done? "5-min LlamaIndex spike — install, point at data, fix backend errors"
+
+---
+
+I can also check this out, right? "LlamaIndex SimpleDirectoryReader loading all formats in dataset"
+
+---
+
+Now, the next in the list
+Pydantic schema — Entity, Triple, ExtractionResult with object_is_entity flag
+
+---
+
+Okay, next. Next. Is it possible to get hold of the microsoft/graphrag prompt? It should be refined and fintinued already
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 4/5 completed, 1 remaining]
+
+Remaining tasks:
+- [in_progress] Smoke-test the prompt against a real document from sample_dataset (optional)
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+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 this is the API key, can I fix the model I wanna use to extract? i wanna use an open source model for this
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/4 completed, 3 remaining]
+
+Remaining tasks:
+- [in_progress] Live smoke-test: call qwen3-next-80b-a3b-instruct:free with the rendered prompt + ExtractionResult schema on the Raj Patel HR record
+- [pending] Verify response parses as ExtractionResult; show cost used
+- [pending] Remind user to ROTATE the exposed API key
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+can you try to use mistral-nemo instead
+
+---
+
+try again now.
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+:Q
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+Can you try to use mistral-nemo
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 5/7 completed, 2 remaining]
+
+Remaining tasks:
+- [in_progress] BLOCKED: Need new OpenRouter API key — exposed key is now dead (401)
+- [pending] Once key is restored: test mistral-nemo, pick reliable model, build lib/extractor.py
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+i just now have a basic question. when I am shipping this how can i expect the jurors to have paid models that can extract
+
+---
+
+I think writing the README now is a good checkpoint
+
+---
+
+Try now
+
+---
+
+<system-reminder>
+[ALL BACKGROUND TASKS COMPLETE]
+
+**Completed:**
+- `bg_82c5b6f4`: Run full tier-1 extraction
+
+Use `background_output(task_id="<id>")` to retrieve each result.
+</system-reminder>
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+README. i also would like to add how embedding fails in negation with reference to the paper.
+
+---
+
+`what is the estimated time for tier 1 to finish?
+
+---
+
+let it run, i will just do the architecture diagram meanwhile to take a break.
+
+---
+
+is the background task affected if my laptop goes to sleep?
+
+---
+
+I finished the architecture diagram. what do you think of this? I am anyway going to expand on each module
+
+i temporarily pasted the location of the png.
+
+---
+
+I want this to be the most abstracted srchitecture diagram. The ingestor has to only use LlamaIndex. So I would like to instead refactor the code to match my diagram. The builder will wrap writer and resolver. One question that popped in my mind is, why are we resolving the predicates if there is not any live building going on. this means that no. of predicates are constant
+
+---
+
+Okay, how much in tier 1 is remaining? why has it slowed down?
+
+---
+
+can we start some part of the refactor? like the ingestor and extractor?
+
+---
+
+So now, I can keep my diagram? What do you think abput the interface and engine?
+
+---
+
+but wait, I don't need the UI. I only need an agent to answer my questions based on the context. The UI is only for Human in the loop flow.
+
+---
+
+how much extraction is remaining?
+
+---
+
+Perfect. Meanwhile, what could be a good mcp client? can claude cli act as one? or opencode cli?
+
+---
+
+So the Python MCP client needs a UI?
+
+---
+
+What do you think about TUI?
+
+---
+
+go ahead. But before can you give me a complete and full prompt that I can give to Lovable for the HIL UI. The prompt that exactly helps Lovable to produce that.
+
+---
+
+are you doing the todos?
+
+---
+
+are you really doing stuff?
+
+---
+
+Yes
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/17 completed, 16 remaining]
+
+Remaining tasks:
+- [in_progress] Build FastAPI backend: app skeleton + common helpers
+- [pending] Implement /health, /stats endpoints
+- [pending] Implement /entities list + detail endpoints
+- [pending] Implement /conflicts list + resolve endpoints
+- [pending] Implement /vocabulary list + merge/promote/dismiss endpoints
+- [pending] Implement /sources list + detail endpoints
+- [pending] Implement /triples/{id}/provenance
+- [pending] Implement /graph/subgraph (pre-sampled for 3D viz)
+- [pending] Add requirements + Makefile targets for API server
+- [pending] Smoke-test every endpoint with curl
+- [pending] Seed demo conflicts (DB currently has 0 conflicts)
+- [pending] Build lib/mcp_server.py
+- [pending] Build lib/agent.py with rich.live output
+- [pending] Record 4-5 demo questions
+- [pending] Build lib/agent_replay.py
+- [pending] README updates
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+I want to just switch the agent, because 20% is too much
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 0/4 completed, 4 remaining]
+
+Remaining tasks:
+- [in_progress] Benchmark 3-4 candidate models on same 5 questions — measure empty-answer rate + quality + cost
+- [pending] Switch QONTEXT_AGENT_MODEL in .env to the winner
+- [pending] Re-record the 4 demo traces with the new model
+- [pending] Verify replay still works with re-recorded traces
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 0/4 completed, 4 remaining]
+
+Remaining tasks:
+- [in_progress] Benchmark 3-4 candidate models on same 5 questions — measure empty-answer rate + quality + cost
+- [pending] Switch QONTEXT_AGENT_MODEL in .env to the winner
+- [pending] Re-record the 4 demo traces with the new model
+- [pending] Verify replay still works with re-recorded traces
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 0/4 completed, 4 remaining]
+
+Remaining tasks:
+- [in_progress] Benchmark 3-4 candidate models on same 5 questions — measure empty-answer rate + quality + cost
+- [pending] Switch QONTEXT_AGENT_MODEL in .env to the winner
+- [pending] Re-record the 4 demo traces with the new model
+- [pending] Verify replay still works with re-recorded traces
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 0/4 completed, 4 remaining]
+
+Remaining tasks:
+- [in_progress] Benchmark 3-4 candidate models on same 5 questions — measure empty-answer rate + quality + cost
+- [pending] Switch QONTEXT_AGENT_MODEL in .env to the winner
+- [pending] Re-record the 4 demo traces with the new model
+- [pending] Verify replay still works with re-recorded traces
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 0/4 completed, 4 remaining]
+
+Remaining tasks:
+- [in_progress] Benchmark 3-4 candidate models on same 5 questions — measure empty-answer rate + quality + cost
+- [pending] Switch QONTEXT_AGENT_MODEL in .env to the winner
+- [pending] Re-record the 4 demo traces with the new model
+- [pending] Verify replay still works with re-recorded traces
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+can you verify against the initial markdown document, what tasks are complete now?
+
+---
+
+[search-mode]
+MAXIMIZE SEARCH EFFORT. Launch multiple background agents IN PARALLEL:
+- explore agents (codebase patterns, file structures, ast-grep)
+- librarian agents (remote repos, official docs, GitHub examples)
+Plus direct tools: Grep, ripgrep (rg), ast-grep (sg)
+NEVER stop at first result - be exhaustive.
+
+---
+
+So criteria for the challenge is to also use 3 partner tech. I already used Lovable. Theres two more I have to use. Can I use Gradium to just read the response? Another I am thinking about Tavilly which is a search app. what do you think?
+
+---
+
+<system-reminder>
+[ALL BACKGROUND TASKS COMPLETE]
+
+**Completed:**
+- `bg_61ae8f4e`: Verify Gradium identity
+
+Use `background_output(task_id="<id>")` to retrieve each result.
+</system-reminder>
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+<system-reminder>
+[ALL BACKGROUND TASKS COMPLETE]
+
+**Completed:**
+- `bg_3c2df57e`: Verify Tavily as BBH sponsor
+
+Use `background_output(task_id="<id>")` to retrieve each result.
+</system-reminder>
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+where do you want me to paste the key?
+
+---
+
+Just bouncing ideas, how about I use Tavilly MCP server?
+
+---
+
+Pasted both my keys there
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/8 completed, 7 remaining]
+
+Remaining tasks:
+- [in_progress] Refactor lib/agent.py to connect to MULTIPLE MCP servers (ours + Tavily remote HTTP)
+- [pending] Prompt tuning: agent knows to use internal search_context first, Tavily tavily_search for external questions
+- [pending] Smoke-test multi-server agent with an internal-only question (should not call Tavily)
+- [pending] Smoke-test multi-server agent with a must-call-web question (should call Tavily)
+- [pending] Record new demo trace: 'Does Inazuma's Leave Policy match German labor law?' (internal + external)
+- [pending] After Tavily done: Gradium STT integration
+- [pending] README: multi-server MCP config + 3-partner section
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/8 completed, 7 remaining]
+
+Remaining tasks:
+- [in_progress] Refactor lib/agent.py to connect to MULTIPLE MCP servers (ours + Tavily remote HTTP)
+- [pending] Prompt tuning: agent knows to use internal search_context first, Tavily tavily_search for external questions
+- [pending] Smoke-test multi-server agent with an internal-only question (should not call Tavily)
+- [pending] Smoke-test multi-server agent with a must-call-web question (should call Tavily)
+- [pending] Record new demo trace: 'Does Inazuma's Leave Policy match German labor law?' (internal + external)
+- [pending] After Tavily done: Gradium STT integration
+- [pending] README: multi-server MCP config + 3-partner section
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/8 completed, 7 remaining]
+
+Remaining tasks:
+- [in_progress] Refactor lib/agent.py to connect to MULTIPLE MCP servers (ours + Tavily remote HTTP)
+- [pending] Prompt tuning: agent knows to use internal search_context first, Tavily tavily_search for external questions
+- [pending] Smoke-test multi-server agent with an internal-only question (should not call Tavily)
+- [pending] Smoke-test multi-server agent with a must-call-web question (should call Tavily)
+- [pending] Record new demo trace: 'Does Inazuma's Leave Policy match German labor law?' (internal + external)
+- [pending] After Tavily done: Gradium STT integration
+- [pending] README: multi-server MCP config + 3-partner section
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 1/8 completed, 7 remaining]
+
+Remaining tasks:
+- [in_progress] Refactor lib/agent.py to connect to MULTIPLE MCP servers (ours + Tavily remote HTTP)
+- [pending] Prompt tuning: agent knows to use internal search_context first, Tavily tavily_search for external questions
+- [pending] Smoke-test multi-server agent with an internal-only question (should not call Tavily)
+- [pending] Smoke-test multi-server agent with a must-call-web question (should call Tavily)
+- [pending] Record new demo trace: 'Does Inazuma's Leave Policy match German labor law?' (internal + external)
+- [pending] After Tavily done: Gradium STT integration
+- [pending] README: multi-server MCP config + 3-partner section
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+I ran, but I get this errorRecording 7.0s from default mic… speak now
+ALSA lib pcm_dsnoop.c:567:(snd_pcm_dsnoop_open) unable to open slave
+arecord: main:834: audio open error: No such file or directory
+arecord failed: Command '['arecord', '-q', '-f', 'S16_LE', '-r', '24000', '-c', '1', '-d', '7', 'data/demo_audio/q1_leave.wav']' returned non-zero exit status 1.
+
+---
+
+it transcribed reall bad Wortless Leaf Policy, Seabrook Vacation Entitlements
+
+---
+
+**** List of CAPTURE Hardware Devices ****
+card 1: Generic_1 [HD-Audio Generic], device 0: SN6140 Analog [SN6140 Analog]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+---
+48      alsa_card.pci-0000_65_00.1      alsa
+49      alsa_card.pci-0000_65_00.6      alsa
+169     bluez_card.80_99_E7_6F_E3_9F    module-bluez5-device.c
+
+---
+
+still empty, no transciption
+
+---
+
+yes
+
+---
+
+yes
+
+---
+
+how do I invoke the agent from  terminal?
+
+---
+
+the readme is unecessarily big
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 9/10 completed, 1 remaining]
+
+Remaining tasks:
+- [pending] Final git commit
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 9/10 completed, 1 remaining]
+
+Remaining tasks:
+- [pending] Final git commit
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 9/10 completed, 1 remaining]
+
+Remaining tasks:
+- [pending] Final git commit
+<!-- OMO_INTERNAL_INITIATOR -->
+
+---
+
+[SYSTEM DIRECTIVE: OH-MY-OPENCODE - TODO CONTINUATION]
+
+Incomplete tasks remain in your todo list. Continue working on the next pending task.
+
+- Proceed without asking for permission
+- Mark each task complete when finished
+- Do not stop until all tasks are done
+- If you believe all work is already complete, the system is questioning your completion claim. Critically re-examine each todo item from a skeptical perspective, verify the work was actually done correctly, and update the todo list accordingly.
+
+[Status: 9/10 completed, 1 remaining]
+
+Remaining tasks:
+- [pending] Final git commit
+<!-- OMO_INTERNAL_INITIATOR -->

@@ -3,12 +3,18 @@
   "checkpoint_id": "ff51d0bcdce3",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 11,
+  "checkpoints_count": 199,
   "files_touched": [
     "Makefile",
     "db/qontextually.db",
+    "lib/api.py",
     "lib/builder/writer.py",
-    "requirements.txt"
+    "lib/mcp_server.py",
+    "requirements.txt",
+    "scripts/__init__.py",
+    "scripts/backfill_conflicts.py",
+    "scripts/seed_demo_conflicts.py",
+    "scripts/start_api.sh"
   ],
   "sessions": [
     {
@@ -28,6 +34,12 @@
       "transcript": "/ff/51d0bcdce3/2/full.jsonl",
       "content_hash": "/ff/51d0bcdce3/2/content_hash.txt",
       "prompt": "/ff/51d0bcdce3/2/prompt.txt"
+    },
+    {
+      "metadata": "/ff/51d0bcdce3/3/metadata.json",
+      "transcript": "/ff/51d0bcdce3/3/full.jsonl",
+      "content_hash": "/ff/51d0bcdce3/3/content_hash.txt",
+      "prompt": "/ff/51d0bcdce3/3/prompt.txt"
     }
   ],
   "token_usage": {
