@@ -3,7 +3,7 @@
   "checkpoint_id": "ff51d0bcdce3",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 9,
+  "checkpoints_count": 11,
   "files_touched": [
     "Makefile",
     "db/qontextually.db",
@@ -22,6 +22,12 @@
       "transcript": "/ff/51d0bcdce3/1/full.jsonl",
       "content_hash": "/ff/51d0bcdce3/1/content_hash.txt",
       "prompt": "/ff/51d0bcdce3/1/prompt.txt"
+    },
+    {
+      "metadata": "/ff/51d0bcdce3/2/metadata.json",
+      "transcript": "/ff/51d0bcdce3/2/full.jsonl",
+      "content_hash": "/ff/51d0bcdce3/2/content_hash.txt",
+      "prompt": "/ff/51d0bcdce3/2/prompt.txt"
     }
   ],
   "token_usage": {
@@ -29,6 +35,6 @@
     "cache_creation_tokens": 141234,
     "cache_read_tokens": 1877088,
     "output_tokens": 24378,
-    "api_call_count": 40
+    "api_call_count": 41
   }
 }

@@ -1,0 +1,33 @@
+You are running a long-running extraction pipeline. Your ONLY job is:
+
+1. cd to /home/b3ll9trix/code/bbh/qontextually
+2. Run this exact command and let it run to completion: `.venv/bin/python -m lib.ingest --tier 1 --workers 8`
+3. Do NOT modify any files. Do NOT run any other commands.
+4. When the command completes, report:
+   - Final stats line (entities_new, entities_matched, triples_new, triples_linked, total_cost, extracted_ok, extract_failed)
+   - Total elapsed time
+   - Any errors/warnings (especially HTTP 4xx errors from OpenRouter)
+
+IMPORTANT:
+- The ingest.py has built-in resumability via audit_log; it will automatically skip the 4,080 already-successful chunks and retry the 2,474 previously-failed ones, plus process the remaining ~17,500 unprocessed chunks. Total work ~19,955 chunks.
+- Expected duration: 2-4 hours at 8 workers.
+- OpenRouter key had a spending cap exhaustion issue earlier that caused HTTP 403 errors. Cap is now lifted but if you see 403 errors recur, stop immediately and report.
+- If the command is still running after ~4 hours, report progress (the last [ingest] status line you see) and say "still running".
+- Do not call any tools that modify the filesystem.
+- Do not run any Python/python3/bash other than the one command above.
+
+Output format when done:
+```
+COMPLETE after Xh Ym
+entities_new=X entities_matched=Y
+triples_new=X triples_linked=Y
+total_cost=$X.XX total_tokens=XXXXX
+extracted_ok=X extract_failed=X write_failed=X
+models_used={...}
+```
+Or if errors are observed:
+```
+ERROR: <what was seen>
+Progress at time of error: <last status line>
+```
+<!-- OMO_INTERNAL_INITIATOR -->
