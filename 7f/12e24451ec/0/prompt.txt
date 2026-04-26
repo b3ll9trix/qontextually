@@ -53,3 +53,370 @@ So, I see the API Endpoints, conflicts don't work
 I get this error Something went wrong
 
 can't access property "authority", d is undefined
+
+---
+
+This is the prompt I posted onto Lovable for the UI
+I need you to build a web UI for Qontextually, a human-in-the-loop review console for a knowledge-graph system. The graph extracts entities and facts from enterprise data (emails, HR records, policies, tickets, CRM). The UI lets a human reviewer inspect the graph and resolve ambiguous cases the automated system flags.
+Stack: React + Vite + TypeScript + TailwindCSS + shadcn/ui (Lovable default). Use @tanstack/react-query for data fetching. Use react-force-graph-3d for the 3D visualization. Do NOT include authentication — this is an internal tool running locally.
+Backend URL: http://localhost:8000 (configurable via VITE_API_URL env var, default http://localhost:8000). All requests go to this base URL.
+---
+The API (authoritative contract — do not invent fields)
+Treat this section as the source of truth. Every field name, every type, every endpoint shape is fixed. Use these exactly.
+GET /health
+Returns { "status": "ok", "db_path": "db/qontextually.db" }. Used for a small status indicator in the app header.
+GET /stats
+Dashboard counters.
+{
+  "entities_total": 29152,
+  "entities_by_type": [
+    { "type": "Person", "count": 12450 },
+    { "type": "Organization", "count": 3200 }
+  ],
+  "triples_total": 103737,
+  "sources_total": 40138,
+  "predicates_total": 2631,
+  "predicates_seeded": 14,
+  "predicates_auto_canonical": 2613,
+  "predicates_merged": 4,
+  "conflicts_pending": 0,
+  "vocabulary_pending_review": 461,
+  "avg_sources_per_triple": 1.58,
+  "last_extraction_at": "2026-04-26T03:31:12Z"
+}
+GET /conflicts?status=pending&limit=50&offset=0
+Paginated list of pending conflicts. A conflict happens when a functional predicate (like has_title) has two different values for the same entity from different sources.
+{
+  "total": 0,
+  "items": [
+    {
+      "conflict_id": 12,
+      "conflict_type": "fact",
+      "subject_entity": {
+        "id": "e_ec0c4bb0e690",
+        "name": "Raj Patel",
+        "type": "Person"
+      },
+      "predicate": "has_title",
+      "candidate_a": {
+        "triple_id": 4722,
+        "value": "Director",
+        "object_is_entity": false,
+        "sources": [
+          {
+            "source_id": 4332,
+            "document_path": "sample_dataset/.../employees.json",
+            "source_type": "hr",
+            "authority": 1.0,
+            "extracted_at": "2026-04-26T00:15:12Z",
+            "snippet": "...Raj Patel is a highly experienced Director in the Engineering category..."
+          }
+        ],
+        "score_breakdown": { "authority": 1.0, "confidence": 1.0, "recency": 0.82, "total": 0.82 }
+      },
+      "candidate_b": {
+        "triple_id": 4901,
+        "value": "Senior Director",
+        "object_is_entity": false,
+        "sources": [
+          {
+            "source_id": 5201,
+            "document_path": "sample_dataset/.../emails.json",
+            "source_type": "email",
+            "authority": 0.4,
+            "extracted_at": "2026-04-26T00:18:44Z",
+            "snippet": "Dear Senior Director Raj Patel, thank you for..."
+          }
+        ],
+        "score_breakdown": { "authority": 0.4, "confidence": 1.0, "recency": 0.85, "total": 0.34 }
+      },
+      "auto_resolution_hint": {
+        "winner": "a",
+        "reason": "HR authority (1.0) substantially higher than email (0.4); score delta 0.48"
+      },
+      "created_at": "2026-04-26T00:18:44Z"
+    }
+  ]
+}
+POST /conflicts/{conflict_id}/resolve
+Body: { "winner": "a" | "b" | "neither", "note": "optional reviewer note" }. Returns the updated conflict row with status: "human_resolved" and resolved_at.
+GET /vocabulary/discovered?limit=50&offset=0&min_occurrences=1
+Auto-discovered predicates that are candidates for review. The backend has already run tier-2 embedding resolution; anything returned here is in the human-review band (cosine 0.75–0.95) or genuinely novel.
+{
+  "total": 461,
+  "items": [
+    {
+      "predicate": "has_skill",
+      "occurrence_count": 7508,
+      "last_used": "2026-04-26T03:30:54Z",
+      "sample_triples": [
+        { "subject_name": "Raj Patel", "object": "Software Engineering" },
+        { "subject_name": "Priya Singh", "object": "Data Science" }
+      ],
+      "nearest_canonical": {
+        "predicate": "has_title",
+        "cosine": 0.82,
+        "occurrence_count": 5431
+      },
+      "description": "Auto-discovered from extractor"
+    }
+  ]
+}
+POST /vocabulary/{predicate}/merge
+Body: { "into": "has_title", "reason": "optional" }. Merges the source predicate into the target. Returns { "triples_rewritten": 234, "merged_at": "..." }.
+POST /vocabulary/{predicate}/promote
+Body: { "is_functional": true, "description": "optional" }. Marks the predicate as canonical (removes from review queue). Returns the updated predicate row.
+POST /vocabulary/{predicate}/dismiss
+Body: { "reason": "optional" }. Removes from review queue without merging (keeps as canonical auto-discovered predicate).
+GET /entities?type=Person&q=raj&limit=50&offset=0
+Paginated search/filter. Supports optional type filter and q fuzzy-match against entity name and aliases.
+{
+  "total": 12450,
+  "items": [
+    {
+      "id": "e_ec0c4bb0e690",
+      "type": "Person",
+      "name": "Raj Patel",
+      "properties": {
+        "title": "Director",
+        "department": "Engineering",
+        "level": "EN14"
+      },
+      "aliases": [
+        { "alias": "raj.patel@inazuma.com", "alias_type": "email" },
+        { "alias": "emp_0431", "alias_type": "username" }
+      ],
+      "triple_count": 11
+    }
+  ]
+}
+GET /entities/{id}
+Full entity card with all outgoing triples and their provenance.
+{
+  "id": "e_ec0c4bb0e690",
+  "type": "Person",
+  "name": "Raj Patel",
+  "properties": {
+    "title": "Director",
+    "department": "Engineering",
+    "level": "EN14"
+  },
+  "aliases": [
+    { "alias": "Raj Patel", "alias_type": "name", "is_primary": true },
+    { "alias": "raj.patel@inazuma.com", "alias_type": "email", "is_primary": false }
+  ],
+  "outgoing_triples": [
+    {
+      "triple_id": 4722,
+      "predicate": "works_at",
+      "object_is_entity": true,
+      "object_id": "e_inazuma",
+      "object_name": "Inazuma.co",
+      "object_value": null,
+      "source_count": 12,
+      "status": "active"
+    }
+  ],
+  "incoming_triples": [
+    {
+      "triple_id": 4901,
+      "subject_id": "e_another",
+      "subject_name": "emp_0106",
+      "predicate": "reports_to",
+      "status": "active"
+    }
+  ]
+}
+GET /triples/{id}/provenance
+Full provenance for one triple.
+{
+  "triple_id": 4722,
+  "subject": { "id": "e_ec0c4bb0e690", "name": "Raj Patel", "type": "Person" },
+  "predicate": "works_at",
+  "object": { "id": "e_inazuma", "name": "Inazuma.co", "type": "Organization" },
+  "object_is_entity": true,
+  "sources": [
+    {
+      "source_id": 4332,
+      "document_path": "sample_dataset/Human_Resource_Management/Employees/employees.json",
+      "source_type": "hr",
+      "authority": 1.0,
+      "confidence": 1.0,
+      "extracted_at": "2026-04-26T00:15:12Z",
+      "raw_text": "the full source chunk...",
+      "snippet_around_fact": "...Raj Patel is a highly experienced Director in the Engineering category..."
+    }
+  ]
+}
+GET /sources?source_type=hr&limit=50&offset=0
+Paginated source browser.
+{
+  "total": 40138,
+  "items": [
+    {
+      "source_id": 4332,
+      "document_path": "sample_dataset/.../employees.json",
+      "source_type": "hr",
+      "authority": 1.0,
+      "extracted_at": "2026-04-26T00:15:12Z",
+      "triple_count": 11,
+      "entity_count": 10,
+      "snippet": "first ~200 chars of raw_text"
+    }
+  ]
+}
+GET /sources/{id}
+Full source with all entities and triples it contributed to.
+{
+  "source_id": 4332,
+  "document_path": "...",
+  "source_type": "hr",
+  "authority": 1.0,
+  "extracted_at": "...",
+  "properties": { "record_id": "emp_0431", "record_index": 0 },
+  "raw_text": "the complete chunk content",
+  "contributed_triples": [
+    {
+      "triple_id": 4722,
+      "subject_name": "Raj Patel",
+      "predicate": "works_at",
+      "object_display": "Inazuma.co"
+    }
+  ],
+  "contributed_entities": [
+    { "id": "e_ec0c4bb0e690", "name": "Raj Patel", "type": "Person" }
+  ]
+}
+GET /graph/subgraph?center=e_ec0c4bb0e690&depth=2&max_nodes=300
+Returns a pre-sampled subgraph for 3D visualization. Backend caps nodes at 500 to prevent browser-side performance issues. If no center is specified, returns the 300 most-connected entities.
+{
+  "nodes": [
+    {
+      "id": "e_ec0c4bb0e690",
+      "name": "Raj Patel",
+      "type": "Person",
+      "degree": 23,
+      "is_center": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "e_ec0c4bb0e690",
+      "target": "e_inazuma",
+      "predicate": "works_at",
+      "source_count": 12
+    }
+  ],
+  "meta": {
+    "total_nodes_in_graph": 29152,
+    "sampled_nodes": 287,
+    "sampled_edges": 521
+  }
+}
+---
+## Screens to build
+### Navigation / Layout
+- **Sidebar** (left, 240px): Dashboard, Conflicts (with badge count), Vocabulary (with badge count), Entities, Sources, Graph. At the bottom: backend health dot (green/red) from `/health`.
+- **Top bar**: "Qontextually" wordmark left, app version/env right.
+- **Main area**: route content.
+- Dark mode only. Use shadcn's default dark theme (slate background, sparing use of blue and emerald for accent).
+- Use monospace font for IDs (`e_ec0c4bb0e690`, `triple #4722`), sans-serif for everything else.
+### Screen 1 — Dashboard (`/`)
+Top counters in a responsive grid: Entities, Triples, Sources, Predicates. Each counter is a card with the big number, the breakdown below (e.g. Predicates: "14 seeded, 2613 auto, 4 merged"), and `last_extraction_at` in a small timestamp at the bottom.
+Below the counters, **two prominent action cards** side by side:
+1. **Pending Conflicts** (red accent if count > 0): "N conflicts need your review → Review". Button takes you to `/conflicts`.
+2. **Discovered Vocabulary** (amber accent): "N predicates awaiting promotion → Review". Takes you to `/vocabulary`.
+Below that, a small "Entities by type" horizontal bar chart (use recharts). Then an "avg sources per triple" metric with a short caption: "The graph is densely provenanced — most facts have more than one supporting source."
+All data from `GET /stats`. Poll every 30s.
+### Screen 2 — Conflict Queue (`/conflicts`)
+**List view** at top: table of pending conflicts with columns: Subject entity | Predicate | Candidate A (value preview) | Candidate B (value preview) | Auto-suggestion | Created. Click a row to open the detail pane on the right side.
+**Detail pane** (right, fixed 50%+ width on desktop, full-screen on mobile): the meat of the HITL moment.
+Show the subject entity card at top (name + type + `id` in monospace).
+Then two side-by-side candidate panels labeled **A** and **B**. Each shows:
+- The value (literal string or object entity) in a large card
+- A score breakdown widget: three small bars for authority × confidence × recency, multiplied, total score
+- The list of supporting sources: for each source, show `source_type` badge (color-coded: hr=blue, crm=indigo, policy=violet, ticket=orange, email=slate, chat=gray), `document_path` truncated, `extracted_at`, and an expandable "view snippet" that reveals the `snippet` text.
+Below the two panels, an **auto-suggestion banner**: "Our scoring suggests **Candidate A** wins (reason: ${auto_resolution_hint.reason}). You can accept this, override, or reject both."
+Action bar at the bottom of the detail: three primary buttons:
+- **Accept A** (green)
+- **Accept B** (orange)
+- **Neither** (gray)
+Plus an optional single-line text input "Note (optional)". Clicking any button sends `POST /conflicts/{id}/resolve` with the chosen winner, then moves to the next conflict in the queue.
+Keyboard shortcuts: `A` → accept A, `B` → accept B, `N` → neither. Show these as tiny badges on each button.
+Empty state: a cheerful checkmark illustration with text "No pending conflicts. The system is caught up."
+### Screen 3 — Discovered Vocabulary (`/vocabulary`)
+Two-pane layout. **Left**: list of predicates awaiting review, sortable by occurrence count (default descending). Each row: predicate name (monospace), usage count, nearest canonical + cosine score, a small color dot for similarity (green ≥0.9, amber 0.85–0.9, gray <0.85).
+**Right**: detail for the selected predicate.
+- Name (big, monospace)
+- Usage count + description (if any)
+- **Nearest canonical match**: card showing `{ predicate, cosine, occurrence_count }`. Subtitle: "Similarity is above review threshold but below auto-merge. Your call."
+- **Sample triples**: render 3–5 real triples in a readable format: `subject_name — predicate → object` (with object being the value from sample_triples[].object)
+- Action bar at bottom:
+  - **Merge into canonical** (primary) — with a subtle dropdown to override the target predicate (defaults to `nearest_canonical.predicate`). On click: `POST /vocabulary/{predicate}/merge` with `into` set.
+  - **Promote as canonical** (secondary) — opens a small modal: "Mark as functional?" checkbox + description field. On submit: `POST /vocabulary/{predicate}/promote`.
+  - **Dismiss** (tertiary, ghost style) — calls `POST /vocabulary/{predicate}/dismiss`.
+Design callout above the list: a small banner explaining why 0.85+ pairs are here — exact text to show: *"These predicates scored between 0.75 and 0.95 cosine similarity to an existing canonical predicate. Our system treats this band as ambiguous: lexical variants (works_at ≈ works_for) usually cluster ≥ 0.95, but polarity-flipped pairs (seeks_advice vs offers_advice) can also score here. Your call is the final signal."*
+### Screen 4 — Entity Browser (`/entities`)
+Split layout: **left column (320px)** — search + filter + results list; **right** — entity detail.
+Left column:
+- Search input (debounced 300ms, updates `q` param on `/entities`)
+- Type filter chips: All, Person, Organization, Project, Ticket, Policy, Document, Event, Product, Meeting, Message (click to toggle one active type)
+- Results as a virtual-scrolled list (use `react-window` or similar for perf). Each row: name, type badge, small preview of properties (e.g. "Engineering · Director"), triple count.
+- Pagination or infinite scroll with `react-query`'s `useInfiniteQuery`.
+Right column (when an entity is selected, call `GET /entities/{id}`):
+- Header: name (big), type badge, id (monospace small)
+- Properties table: key / value pairs in a clean grid
+- Aliases: chips with `alias_type` as label, asterisk for `is_primary`
+- Tabs for "Outgoing (N)" and "Incoming (N)" triples. Each list shows predicate + object, clicking the triple opens a provenance drawer that calls `GET /triples/{id}/provenance`.
+- A button in the header: "Open in Graph View" — navigates to `/graph?center={id}`.
+### Screen 5 — Source Browser (`/sources`)
+Table layout with filters across the top: `source_type` dropdown (all / hr / crm / policy / ticket / email / chat / unknown), date range picker (on `extracted_at`).
+Table columns: Source type badge | Document path (truncated, full path on hover) | Extracted at | Triple count | Entity count | Actions.
+Click a row to open a modal with the full source view from `GET /sources/{id}`: complete `raw_text` in a scrollable code-style pane on the left (monospace, whitespace-pre), and on the right, two lists: "Contributed entities" and "Contributed triples" — each item a clickable link back to the Entity Browser.
+Pagination at the bottom.
+### Screen 6 — Graph Visualization (`/graph`)
+A 3D force-directed graph using `react-force-graph-3d`.
+**Critical constraints** (tell Lovable exactly this):
+- The backend returns at most **500 nodes**. Do not attempt to render more. If user requests more detail, they should re-center on a specific entity.
+- The default view (no `center` param) shows the 300 most-connected entities as an overview.
+- Users can type an entity name into a search box; picking a result sets `center` and re-fetches.
+- Node color by `type` (consistent with the entity-type badge colors used elsewhere).
+- Node size proportional to `degree` (clamp: min 4, max 20).
+- Edge thickness proportional to `source_count` (clamp: min 1, max 5) — this visually shows multi-source provenance.
+- On node hover: tooltip with name, type, degree.
+- On node click: open a panel on the right with the entity card (minimal version: name, type, properties) and a button "Inspect in Entity Browser" that navigates to `/entities?q={name}`.
+- On edge hover: tooltip with predicate and source_count.
+Controls overlay (top-right corner, floating):
+- Search input: "Center on entity..."
+- Depth selector: 1, 2, 3 (default 2)
+- Max nodes selector: 100, 300, 500 (default 300)
+- "Reset camera" button
+Performance note for Lovable: use `react-force-graph-3d`'s `cooldownTicks={100}` to stop simulation once stable. Don't re-mount the graph on every filter change — use its `graphData` prop.
+Empty state if no data: a clean panel explaining: "The graph is empty or the backend is unreachable. Check health indicator."
+---
+Styling and UX rules
+- Dark mode only, using shadcn/ui's default dark theme.
+- Density: moderate — prefer whitespace over cramming, but don't waste vertical space.
+- Monospace (font-mono): all IDs (e_ec0c4bb0e690, triple #4722, source #4332), all predicate names, all document paths. Everything else sans-serif.
+- Color palette for source types: consistent across all screens. hr=blue-500, crm=indigo-500, policy=violet-500, ticket=orange-500, email=slate-500, chat=gray-500, unknown=neutral-500.
+- Color palette for entity types: Person=emerald-500, Organization=sky-500, Project=amber-500, Policy=violet-500, Ticket=orange-500, everything else=gray-400.
+- Empty states are friendly, not barren. Explain why the list is empty and what would populate it.
+- Loading states: skeleton components (shadcn/ui Skeleton), not spinners.
+- Error states: a small red banner at the top of the screen saying what failed and a "Retry" button. Never fail silently.
+- Keyboard shortcuts for Conflict Queue (A/B/N) and Vocabulary (M to merge, P to promote, D to dismiss). Show a small "?" button in the top bar that opens a shortcut legend modal.
+Things NOT to do
+- Do NOT add authentication, login, or user accounts. Local tool.
+- Do NOT add write endpoints I haven't specified (creating entities by hand, deleting triples, etc.). Read + resolve + merge + promote + dismiss only.
+- Do NOT render graphs over 500 nodes. Do NOT try to fetch all entities in one call for the graph.
+- Do NOT add a chat/question interface. That's a separate program (a terminal agent).
+- Do NOT use absolute imports from @/* aliases if Lovable hasn't configured them — use relative paths.
+- Do NOT invent field names not in the API contract above.
+Demo script context (for shaping emphasis)
+The UI will be demoed live for judges at a hackathon. The presentation flow:
+1. Open Dashboard — judge sees the scale (29k entities, 103k triples) and the two "pending review" action cards.
+2. Click Conflicts → resolve one conflict visually (A/B/Neither).
+3. Click Vocabulary → merge a synonym predicate into a canonical one.
+4. Click Graph → a colored 3D force graph spins, judges see multi-source-provenance-as-thick-edges.
+Optimize the Dashboard, Conflicts, and Vocabulary screens for visual impressiveness and clarity. Graph is the "flashy close." Entities and Sources are inspection tools, less demo-critical but still clean.
+Build this as one coherent app
+Not a collection of disconnected pages. Shared sidebar, shared top bar, shared theme, shared color conventions. React-query-based data fetching everywhere with consistent error handling. Pagination everywhere lists are long.
