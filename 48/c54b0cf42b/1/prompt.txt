@@ -1,0 +1,45 @@
+I'm building a knowledge-graph Q&A agent for a hackathon demo (tomorrow 14:00). I need you to find me the best OPEN-SOURCE model on OpenRouter for this specific role, not for general coding or chat. Help me compare 3-5 candidates.
+
+CONTEXT (critical for picking the right model):
+- The model will be an AGENT answering questions about an enterprise knowledge graph
+- It uses a small set of MCP tools: search_context(query), get_entity(name_or_id), list_path(vfs_path), read_path(vfs_path), get_provenance(triple_id)
+- Questions are multi-hop: "Who manages the Phoenix project?", "What policies apply to John's current project?", "What is John's title?" (this one has conflicts to surface)
+- The agent needs to:
+  1. Decide which tool to call based on the question
+  2. Interpret tool results (JSON with entity/triple/source data)
+  3. Possibly call another tool based on first result (multi-hop)
+  4. Return a final answer WITH CITATIONS (triple_id + source_id pointers)
+- The model needs STRONG tool-calling reliability — OpenAI-compatible function/tool schema, JSON mode correctness
+- The agent runs ~4-6 tool calls per question maximum
+- Context: short (~3k tokens prompt + ~2k tokens tool results per call)
+- OSS preferred (I already used mistralai/mistral-nemo for extraction at $0.01/1M input; I can accept a step up in cost here since it's only ~10 questions in the demo, not 67k chunks)
+
+EXCLUSION: Do NOT recommend Claude, GPT-4, Gemini. Only OSS-weights models (the weights are published).
+
+TASK: Research OpenRouter's current OSS model catalog for models that:
+1. Have demonstrated strong agentic tool-use capabilities (benchmarks: BFCL, Nexus, AgentBench)
+2. Support OpenAI-compatible tools/response_format on OpenRouter
+3. Are available without special access (no waitlist)
+4. Pricing reasonable ($0.10 - $1.00 per 1M input tokens)
+5. Are known to handle multi-hop reasoning (reading one tool result, deciding to call another tool)
+
+Specifically, look into:
+- Qwen3 family (qwen3-next-80b-a3b, qwen3-coder-30b, qwen3-max variants) — any one known for tool-use specifically?
+- DeepSeek family (deepseek-chat-v3, deepseek-coder-v2) — benchmarks for tool-use?
+- Llama 3.3 / Llama 4 family — 70b-instruct or larger? Tool-use performance?
+- Mistral Large, Mixtral 8x22b — are these on OpenRouter? Tool-use quality?
+- GLM-4 / GLM-4.5 — any variants known for agents?
+- Yi, Command-R+, any others specifically good at agent tasks?
+
+DELIVERABLE:
+- A ranked shortlist of 3-5 OSS models, EACH with:
+  - Exact OpenRouter slug (curl-able)
+  - Pricing (input/output per 1M tokens)
+  - Tool-use capability evidence (benchmark score, OR known track record in the wild, OR release notes)
+  - Context length
+  - Specific note on "is this good for an agent loop with 4-6 tool calls, multi-hop reasoning, JSON tool schemas?"
+- Your #1 pick with 2-3 sentence justification for MY use case (hackathon demo, graph Q&A agent, short prompts, wants stability)
+- #1 pick's backup if primary hits issues (rate limit, bad response)
+
+Please fetch from OpenRouter's models API + read release notes / benchmark posts on the models you shortlist. Don't just list what the models claim — tell me what the community has actually found.
+<!-- OMO_INTERNAL_INITIATOR -->
