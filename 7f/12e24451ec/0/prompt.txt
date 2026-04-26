@@ -1,0 +1,55 @@
+this is project, can you start the server.
+
+---
+
+It transcribes reall bad
+
+---
+
+Can you go over the entire project and help me demo this.
+
+---
+
+i want run the terminal agent
+
+---
+
+give me the command or add it to the makefile
+
+---
+
+i should also be able to add the flags.
+
+---
+
+only --speak and --no-web
+
+---
+
+the regular options are more standard
+
+---
+
+I want the common to be like make ask "what is ...." -s -nw
+
+---
+
+yes
+
+---
+
+Can you add a wrapper for replay demo?
+
+---
+
+What do you mean by trace here?
+
+---
+
+So, I see the API Endpoints, conflicts don't work
+
+---
+
+I get this error Something went wrong
+
+can't access property "authority", d is undefined
