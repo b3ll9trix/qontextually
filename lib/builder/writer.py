@@ -69,18 +69,6 @@ def _canonical_entity_type(raw: str) -> str:
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _relativize(document_path: str) -> str:
-    """If document_path is absolute and inside the project, store as repo-relative
-    so the DB stays portable across machines and clones. Anything else
-    (already-relative, or outside the project) is stored as-is."""
-    if not document_path.startswith("/"):
-        return document_path
-    try:
-        return str(Path(document_path).resolve().relative_to(_PROJECT_ROOT))
-    except ValueError:
-        return document_path
-
-
 def _upsert_source(
     conn: sqlite3.Connection,
     *,

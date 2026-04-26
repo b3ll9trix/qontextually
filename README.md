@@ -46,6 +46,26 @@ Two lanes meet at the graph: **data-flow** (ingest → extract → write) and **
 | `lib/agent_replay.py` | Zero-cost demo replay. Re-executes saved trace tool calls live against the right MCP server; no LLM calls. |
 | `migrations/` | 11 versioned SQL files. FTS5 with porter+unicode61, partial unique indexes, merge-history tables that survive hard-deletes. |
 
+### Pipeline, step by step
+
+The four diagrams below walk the data-flow lane from raw file to written triple.
+
+**1. Ingestor** — per-record splitting with format-aware custom readers (`lib/ingestor.py`):
+
+![Ingestor](docs/ingestor.png)
+
+**2. Extractor** — three-tier cascading LLM extraction with per-attempt audit logging (`lib/extractor.py`):
+
+![Extractor](docs/extractor.png)
+
+**3. Builder / writer** — one atomic transaction per chunk: sources row, Tier-1 entity resolution, Tier-1 predicate normalization, triple upsert with multi-source provenance, inline conflict detection on functional predicates (`lib/builder/writer.py`):
+
+![Builder](docs/builder.png)
+
+**4. Builder / resolver** — Tier-2 predicate resolution via embeddings; auto-merges at cosine ≥ 0.95, queues the 0.75–0.95 ambiguous band for human review (`lib/builder/resolver.py`):
+
+![Resolver](docs/builder_resolver.png)
+
 ---
 
 ## Three partner technologies

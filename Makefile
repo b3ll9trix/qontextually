@@ -44,9 +44,14 @@ migrate: setup
 
 run: migrate
 	@echo "🚀 Starting the Qontextually extraction pipeline..."
+sqlite-shell: setup
+	@echo "🐚 Launching interactive SQLite shell..."
+	PYTHONPATH=. $(PYTHON) scripts/sqlite_shell.py
+
 ui: setup
 	@echo "🌐 Launching the Qontext Virtual File System (Database Browser)..."
-	$(VENV)/bin/sqlite_web db/qontextually.db
+	$(eval VEC_PATH := $(shell $(PYTHON) -c "import sqlite_vec, os; print(os.path.join(os.path.dirname(sqlite_vec.__file__), 'vec0' + ('.dylib' if os.uname().sysname == 'Darwin' else '.so')))"))
+	$(VENV)/bin/sqlite_web -p 8081 -e $(VEC_PATH) db/qontextually.db
 
 api: migrate
 	@echo "🔌 Starting Qontextually API on http://127.0.0.1:8000 ..."
