@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Replay a recorded Qontextually agent trace (no LLM cost, no API key needed).
+#   ./replay                        # default: q1_leave_policy
+#   ./replay q3                     # short id → data/demo_qa/q3*.json
+#   ./replay q3_raj                 # also fine
+#   ./replay path/to/trace.json     # explicit path
+#   ./replay -a                     # replay every trace in data/demo_qa/
+#   ./replay q3 -s                  # speak the answer
+#   ./replay q3 -d 0.3              # set inter-tool delay (seconds)
+set -eu
+cd "$(dirname "$0")"
+
+TRACE_DIR="data/demo_qa"
+DEFAULT_ID="q1_leave_policy"
+
+flags=()
+target=""
+expect_delay=0
+for arg in "$@"; do
+  if [ "$expect_delay" = "1" ]; then
+    flags+=("--delay" "$arg"); expect_delay=0; continue
+  fi
+  case "$arg" in
+    -a|--all)   flags+=("--all") ;;
+    -s|--speak) flags+=("--speak") ;;
+    -d|--delay) expect_delay=1 ;;
+    -*)         echo "unknown flag: $arg (supported: -a/--all, -s/--speak, -d/--delay N)" >&2; exit 2 ;;
+    *)          if [ -n "$target" ]; then echo "multiple targets given" >&2; exit 2; fi
+                target="$arg" ;;
+  esac
+done
+
+# --all needs a directory, not a file
+if printf '%s\n' "${flags[@]}" | grep -qx -- "--all"; then
+  target="${target:-$TRACE_DIR}"
+else
+  target="${target:-$DEFAULT_ID}"
+  if [ ! -f "$target" ]; then
+    match=$(ls "$TRACE_DIR"/${target}*.json 2>/dev/null | head -1 || true)
+    if [ -z "$match" ]; then
+      echo "no trace matching '$target' in $TRACE_DIR" >&2
+      ls "$TRACE_DIR" >&2
+      exit 2
+    fi
+    target="$match"
+  fi
+fi
+
+exec .venv/bin/python -m lib.agent_replay "${flags[@]}" "$target"

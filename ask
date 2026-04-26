@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Ask the Qontextually terminal agent.
+#   ./ask "What does the Leave Policy say?"
+#   ./ask "Who manages Phoenix?" -nw       # internal graph only (no web)
+#   ./ask "What is our PTO policy?" -s     # speak the answer
+#   ./ask "..." -s -nw                     # both
+set -eu
+cd "$(dirname "$0")"
+
+flags=()
+question=""
+for arg in "$@"; do
+  case "$arg" in
+    -s|--speak)   flags+=("--speak") ;;
+    -nw|--no-web) flags+=("--no-web") ;;
+    -*)           echo "unknown flag: $arg (supported: -s/--speak, -nw/--no-web)" >&2; exit 2 ;;
+    *)            if [ -n "$question" ]; then echo "multiple questions given" >&2; exit 2; fi
+                  question="$arg" ;;
+  esac
+done
+
+if [ -z "$question" ]; then
+  echo "usage: ./ask \"question\" [-s] [-nw]" >&2
+  exit 2
+fi
+
+exec .venv/bin/python -m lib.agent "${flags[@]}" "$question"

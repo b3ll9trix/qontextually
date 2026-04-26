@@ -31,7 +31,7 @@ Total after per-record splitting: **67,030 documents** covering 1,322 unique fil
 ## Use the custom reader, not SimpleDirectoryReader directly
 
 ```python
-from lib.readers import qontext_reader
+from lib.ingestor import qontext_reader
 
 reader = qontext_reader("sample_dataset")
 docs = reader.load_data()

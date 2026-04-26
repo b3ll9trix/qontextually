@@ -4,7 +4,7 @@
 # Author: Reshma Suresh (https://github.com/b3ll9trix)
 # ============================================================================
 
-.PHONY: setup migrate run clean deep-clean all install-uv
+.PHONY: setup migrate run api api-stop agent agent-replay ui-install ui-dev ui-build ui-sync demo clean deep-clean all install-uv
 
 # Define the sandbox environment
 VENV = .venv
@@ -47,6 +47,57 @@ run: migrate
 ui: setup
 	@echo "🌐 Launching the Qontext Virtual File System (Database Browser)..."
 	$(VENV)/bin/sqlite_web db/qontextually.db
+
+api: migrate
+	@echo "🔌 Starting Qontextually API on http://127.0.0.1:8000 ..."
+	@bash scripts/start_api.sh
+
+api-stop:
+	@echo "🛑 Stopping API server ..."
+	@pkill -9 -f "uvicorn lib.api" 2>/dev/null || true
+	@echo "  done"
+
+# ----------------------------------------------------------------------------
+# Web UI (vendored TanStack Start app, originally built in Lovable). Lives in
+# ui/. Bun is preferred (matches bun.lockb); npm fallback also works.
+# ----------------------------------------------------------------------------
+NODE_PM := $(shell command -v bun >/dev/null 2>&1 && echo bun || echo npm)
+
+ui/node_modules: ui/package.json
+	@echo "📦 Installing UI deps with $(NODE_PM)..."
+	@cd ui && $(NODE_PM) install
+
+ui-install: ui/node_modules
+
+ui-dev: ui-install
+	@echo "🌐 Starting UI dev server (default http://localhost:5173)"
+	@cd ui && $(NODE_PM) run dev
+
+ui-build: ui-install
+	@cd ui && $(NODE_PM) run build
+
+# Re-snapshot the UI source from the upstream Lovable repo. Run this whenever
+# you've iterated in Lovable and want the changes mirrored here.
+#   make ui-sync                                   # default repo
+#   make ui-sync UI_REPO=<other-git-url>           # override
+# Preserves ui/README.md (our credit file) and ui/node_modules. Review the
+# result with `git diff ui/` before committing.
+UI_REPO ?= git@github.com:b3ll9trix/qontextual-navigator.git
+UI_SYNC_TMP := /tmp/qontextually-ui-sync
+ui-sync:
+	@echo "📥 Cloning $(UI_REPO) ..."
+	@rm -rf $(UI_SYNC_TMP)
+	@git clone --depth 1 $(UI_REPO) $(UI_SYNC_TMP)
+	@echo "🔄 Syncing into ui/ (preserving README.md, node_modules)..."
+	@rsync -a --delete \
+	    --exclude='node_modules' --exclude='dist' --exclude='.git' --exclude='README.md' \
+	    $(UI_SYNC_TMP)/ ui/
+	@rm -rf $(UI_SYNC_TMP)
+	@echo "✅ UI synced. Review with: git diff ui/  (and rerun: make ui-install if package.json changed)"
+
+# One-command demo: API detached on :8000, UI dev server in foreground.
+# Stop the UI with Ctrl-C, then `make api-stop` to stop the backend.
+demo: api ui-dev
 clean:
 	@echo "🧹 Sweeping up the sandbox and database..."
 	rm -rf $(VENV)

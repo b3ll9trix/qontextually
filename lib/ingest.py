@@ -15,8 +15,8 @@ from llama_index.core import Document
 
 from db.db import get_connection
 from lib.extractor import ExtractionOutcome, OutOfCreditsError, extract_from_chunk
-from lib.readers import qontext_reader
-from lib.writer import WriteSummary, write_extraction
+from lib.ingestor import qontext_reader
+from lib.builder import WriteSummary, write_extraction
 
 log = logging.getLogger(__name__)
 

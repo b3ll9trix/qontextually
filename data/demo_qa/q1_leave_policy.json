@@ -1,0 +1,51 @@
+{
+  "question": "What does the Leave Policy say about vacation entitlements?",
+  "model": "qwen/qwen3-next-80b-a3b-instruct",
+  "turns": [
+    {
+      "tool": "search_context",
+      "arguments": {
+        "query": "Leave Policy vacation entitlements",
+        "limit": 5
+      },
+      "result_preview": "2 hits",
+      "result_full": "{\n  \"query\": \"Leave Policy vacation entitlements\",\n  \"total_hits\": 2,\n  \"hits\": [\n    {\n      \"kind\": \"source\",\n      \"source_id\": 40121,\n      \"document_path\": \"sample_dataset/Policy_Documents/Inazuma.co Leave Policy.pdf\",\n      \"source_type\": \"policy\",\n      \"authority\": 0.7,\n      \"snippet\": \"\u2026Employees are [entitled] to [Number] days of Casual [Leave] per \\n[leave] year. \\n\u25cb Eligibility: All regular employees\u2026\"\n    },\n    {\n      \"kind\": \"source\",\n      \"source_id\": 40109,\n      \"document_path\": \"sample_dataset/Policy_Documents/Inazuma.co Employee Handbook.pdf\",\n      \"source_type\": \"policy\",\n      \"authority\": 0.7,\n      \"snippet\": \"\u2026Typically, employees are \\n[entitled] to [Specify break [policy], \\ne.g., a 15-minute break for every\u2026\"\n    }\n  ]\n}"
+    },
+    {
+      "tool": "get_source",
+      "arguments": {
+        "source_id": 40121
+      },
+      "result_preview": "{'source_id': 40121, 'document_path': 'sample_datase\u2026",
+      "result_full": "{\n  \"source_id\": 40121,\n  \"document_path\": \"sample_dataset/Policy_Documents/Inazuma.co Leave Policy.pdf\",\n  \"source_type\": \"policy\",\n  \"authority\": 0.7,\n  \"extracted_at\": \"2026-04-26 03:26:33\",\n  \"properties\": {\n    \"page_label\": \"3\",\n    \"file_type\": \"application/pdf\"\n  },\n  \"raw_text\": \" \\n \\nspecific leave types \\n(e.g., bereavement \\nleave) \\n5. Types of Leave \\nInazuma.co offers the following types of leave to eligible employees: \\n\u25cf 5.1 Earned Leave (EL) \\n\u25cb Earned Leave, also known as Annual Leave or Privilege Leave, is accrued by \\nemployees based on their length of service. It can be used for vacations, \\npersonal needs, or other planned absences. \\n\u25cb Accrual: Employees accrue Earned Leave at the rate of [Number] days per \\n[Period] of service. For example: 1 day for every 20 days of work. \\n\u25cb Eligibility: All regular employees are eligible to accrue Earned Leave. \\n\u25cb Maximum Accrual/Carryover: An employee may accrue a maximum of \\n[Number] days of Earned Leave. A maximum of [Number] days of Earned \\nLeave can be carried over to the next leave year. \\n\u25cb Utilization: Earned Leave must be requested in advance, except in cases of \\nemergency. \\n\u25cb Encashment: Employees may be allowed to encash accrued Earned Leave \\nunder certain conditions, such as during employment, or upon \\ntermination/retirement, subject to company policy and local laws. \\n\u25cb Leave Year: For the purpose of Earned Leave, Inazuma.co will follow the \\n[Calendar/Fiscal/Anniversary] year. \\n\u25cf 5.2 Casual Leave (CL) \\n\u25cb Casual Leave is provided for short-term absences due to unforeseen \\ncircumstances or personal exigencies. \\n\u25cb Entitlement: Employees are entitled to [Number] days of Casual Leave per \\nleave year. \\n\u25cb Eligibility: All regular employees are eligible for Casual Leave. \\n\u25cb Utilization: Casual Leave should be applied for in advance whenever \\npossible, but may be taken for unforeseen circumstances with notification to \\nthe reporting manager as soon as possible. \\n\u25cb Carryover: Casual Leave cannot be carried over to the next leave year. \\n\u25cb Maximum limit: Casual leave can be taken for a maximum of [Number] \\nconsecutive days. \\n\u25cf 5.3 Sick Leave (SL) \",\n  \"contributed_triples\": [\n    {\n      \"triple_id\": 103540,\n      \"subject\": \"Inazuma.co\",\n      \"predicate\": \"offers\",\n      \"object\": \"Earned Leave (EL)\"\n    },\n    {\n      \"triple_id\": 103541,\n      \"subject\": \"Inazuma.co\",\n      \"predicate\": \"offers\",\n      \"object\": \"Casual Leave (CL)\"\n    },\n    {\n      \"triple_id\": 103542,\n      \"subject\": \"Inazuma.co\",\n      \"predicate\": \"offers\",\n      \"object\": \"Sick Leave (SL)\"\n    }\n  ]\n}"
+    },
+    {
+      "tool": "get_entity",
+      "arguments": {
+        "name_or_id": "Casual Leave (CL)"
+      },
+      "result_preview": "Casual Leave (CL) (LeaveType)",
+      "result_full": "{\n  \"id\": \"e_fbabd55bd07b\",\n  \"type\": \"LeaveType\",\n  \"name\": \"Casual Leave (CL)\",\n  \"properties\": {\n    \"entitlement\": \"[Number] days per leave year\",\n    \"maximum_limit\": \"[Number] consecutive days\",\n    \"days_per_year\": \"12\"\n  },\n  \"aliases\": [\n    {\n      \"alias\": \"Casual Leave (CL)\",\n      \"alias_type\": \"name\",\n      \"is_primary\": true\n    },\n    {\n      \"alias\": \"CL\",\n      \"alias_type\": \"initials\",\n      \"is_primary\": false\n    }\n  ],\n  \"outgoing_triples\": [],\n  \"incoming_triples\": [\n    {\n      \"triple_id\": 103541,\n      \"subject\": \"Inazuma.co\",\n      \"subject_id\": \"e_dc128b0cefa4\",\n      \"predicate\": \"offers\"\n    },\n    {\n      \"triple_id\": 103565,\n      \"subject\": \"Inazuma.co Leave Policy\",\n      \"subject_id\": \"e_03e35a754d74\",\n      \"predicate\": \"defines\"\n    }\n  ]\n}"
+    },
+    {
+      "tool": "get_provenance",
+      "arguments": {
+        "triple_id": 103541
+      },
+      "result_preview": "{'triple_id': 103541, 'subject': {'id': 'e_dc128b0cefa4', 'name': 'Inazuma.co', 'type': 'O\u2026",
+      "result_full": "{\n  \"triple_id\": 103541,\n  \"subject\": {\n    \"id\": \"e_dc128b0cefa4\",\n    \"name\": \"Inazuma.co\",\n    \"type\": \"Organization\"\n  },\n  \"predicate\": \"offers\",\n  \"object\": {\n    \"id\": \"e_fbabd55bd07b\",\n    \"name\": \"Casual Leave (CL)\",\n    \"type\": \"LeaveType\"\n  },\n  \"object_value\": null,\n  \"object_is_entity\": true,\n  \"sources\": [\n    {\n      \"source_id\": 40121,\n      \"document_path\": \"sample_dataset/Policy_Documents/Inazuma.co Leave Policy.pdf\",\n      \"source_type\": \"policy\",\n      \"authority\": 0.7,\n      \"confidence\": 1.0,\n      \"extracted_at\": \"2026-04-26 03:26:33\",\n      \"snippet\": \" \\n \\nspecific leave types \\n(e.g., bereavement \\nleave) \\n5. Types of Leave \\nInazuma.co offers the following types of leave to eligible employees: \\n\u25cf 5.1 Earned Leave (EL) \\n\u25cb Earned Leave, also known as Annual Leave or Privilege Leave, is accrued by \\nemployees based on their length of service. It can be used for vacations, \\npersonal needs, or other planned absences. \\n\u25cb Accrual: Employees accrue Earned Leave at the rate of [Number] days per \\n[Period] of service. For example: 1 day for every 20 days o\"\n    }\n  ]\n}"
+    },
+    {
+      "tool": "get_provenance",
+      "arguments": {
+        "triple_id": 103565
+      },
+      "result_preview": "{'triple_id': 103565, 'subject': {'id': 'e_03e35a754d74', 'name': 'Inazuma.co Leave Policy\u2026",
+      "result_full": "{\n  \"triple_id\": 103565,\n  \"subject\": {\n    \"id\": \"e_03e35a754d74\",\n    \"name\": \"Inazuma.co Leave Policy\",\n    \"type\": \"Policy\"\n  },\n  \"predicate\": \"defines\",\n  \"object\": {\n    \"id\": \"e_fbabd55bd07b\",\n    \"name\": \"Casual Leave (CL)\",\n    \"type\": \"LeaveType\"\n  },\n  \"object_value\": null,\n  \"object_is_entity\": true,\n  \"sources\": [\n    {\n      \"source_id\": 40125,\n      \"document_path\": \"sample_dataset/Policy_Documents/Inazuma.co Leave Policy.pdf\",\n      \"source_type\": \"policy\",\n      \"authority\": 0.7,\n      \"confidence\": 1.0,\n      \"extracted_at\": \"2026-04-26 03:26:35\",\n      \"snippet\": \" \\n \\nLeave ty ment ver \\nEarned \\nLeave \\n(EL) \\nAll \\nregular \\nemploy\\nees \\n1 day \\nper 20 \\ndays of \\nservice \\nUp to \\n30 \\ndays \\nCasual \\nLeave \\n(CL) \\nAll \\nregular \\nemploy\\nees \\n12 days \\nper \\nleave \\nyear \\nNo \\ncarryov\\ner \\nSick \\nLeave \\n(SL) \\nAll \\nregular \\nemploy\\nees \\n10 days \\nper \\nleave \\nyear \\nYes, up \\nto 30 \\ndays \\nMaterni\\nty \\nLeave \\n(ML) \\nEligible \\nfemale \\nemploy\\nees \\n12 \\nweeks      \\nN/A \\nPaternit\\ny Leave \\n(PL) \\nEligible \\nmale \\nemploy\\nees \\n5 days N/A \\nCompe\\nnsatory \\nLeave \\n(Comp-\\nOff) \\nEmploy\\nees \\nworking \\n\"\n    }\n  ]\n}"
+    }
+  ],
+  "final_answer": "The Leave Policy states that all regular employees are entitled to 12 days of Casual Leave per leave year, which cannot be carried over to the next year. \n\nCitations:\n- Inazuma.co offers Casual Leave (CL) (triple #103541, source #40121)\n- Inazuma.co Leave Policy defines Casual Leave (CL) (triple #103565, source #40125)",
+  "elapsed_s": 6.723620891571045,
+  "total_tokens": 12279,
+  "total_cost": 0.0013465
+}

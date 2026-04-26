@@ -4,3 +4,8 @@ requests
 python-dotenv
 llama-index-core>=0.14,<0.15
 llama-index-readers-file>=0.6,<0.7
+fastapi>=0.115
+uvicorn[standard]>=0.30
+rich>=13.7
+mcp>=1.0
+gradium>=0.5

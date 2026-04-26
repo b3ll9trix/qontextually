@@ -76,7 +76,7 @@ class Triple(BaseModel):
 class ExtractionResult(BaseModel):
     """Everything the LLM extracted from one source chunk.
 
-    A chunk is one Document from lib.readers - one email, one resume page,
+    A chunk is one Document from lib.ingestor - one email, one resume page,
     one JSON record. The chunk's (file_path, record_index / page / row_index)
     becomes the sources row; every triple here gets a triple_sources link to
     that row. Provenance is at the chunk level by design.
