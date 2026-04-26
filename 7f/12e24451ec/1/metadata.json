@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.5.6",
+  "checkpoint_id": "7f12e24451ec",
+  "session_id": "ses_2398d2f35ffe22E5qj57eUnody",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-26T07:58:56.956069368Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "ask",
+    "data/bench_agent_models.json",
+    "data/demo_qa/q1_leave_policy.json",
+    "data/demo_qa/q2_policies.json",
+    "data/demo_qa/q3_raj.json",
+    "data/demo_qa/q4_it_asset.json",
+    "data/demo_qa/q5_compliance.json",
+    "lib/agent.py",
+    "lib/agent_replay.py",
+    "replay",
+    "scripts/bench_agent_models.py"
+  ],
+  "agent": "Claude Code",
+  "model": "anthropic/claude-opus-4.7",
+  "turn_id": "948cf0e7565c",
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 290
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-26T07:58:56.808429624Z",
+    "agent_lines": 1187,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 1187,
+    "total_lines_changed": 1187,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
