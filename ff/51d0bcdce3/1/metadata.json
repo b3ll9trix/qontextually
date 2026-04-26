@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.5.6",
+  "checkpoint_id": "ff51d0bcdce3",
+  "session_id": "ses_238294c2effe07lXdWCcmFsPJu",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-26T07:57:56.814858221Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "db/qontextually.db"
+  ],
+  "agent": "OpenCode",
+  "model": "anthropic/claude-haiku-4.5",
+  "turn_id": "be8fca0e43b9",
+  "token_usage": {
+    "input_tokens": 37,
+    "cache_creation_tokens": 69052,
+    "cache_read_tokens": 211262,
+    "output_tokens": 4871,
+    "api_call_count": 6
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-26T07:57:56.809184612Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 1789,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 1789,
+    "total_lines_changed": 1790,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 148,
+      "user_lines_removed": 135,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "README.md": 3,
+        "lib/SPIKE_FINDINGS.md": 1,
+        "lib/ingest.py": 1,
+        "lib/ingestor.py": 131,
+        "lib/readers.py": 11,
+        "lib/schemas.py": 1
+      },
+      "user_removed_per_file": {
+        "README.md": 3,
+        "lib/SPIKE_FINDINGS.md": 1,
+        "lib/ingest.py": 1,
+        "lib/readers.py": 129,
+        "lib/schemas.py": 1
+      }
+    }
+  ]
+}
