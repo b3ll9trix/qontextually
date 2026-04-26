@@ -63,9 +63,16 @@ Keys in `.env`: `OPENROUTER_API_KEY`, `TAVILY_API_KEY`, `GRADIUM_API_KEY`. Repla
 ## Run it
 
 ### Prerequisites
-- Python 3.12–3.14
-- [`uv`](https://github.com/astral-sh/uv) (auto-installed by the Makefile)
-- `git-lfs` if you want to rebuild from source
+- **Python 3.12–3.14**
+- **[`git-lfs`](https://git-lfs.com)** — install **before** `git clone`. The prebuilt 225 MB graph (`db/qontextually.db`) ships via Git LFS; without LFS the file clones as a 134-byte pointer and nothing works. Most modern git installs already include it; verify with `git lfs version`.
+- **[Bun](https://bun.sh) or `npm`** — only if you want the web UI. `make ui-dev` auto-detects (Bun preferred to match `ui/bun.lockb`).
+
+Everything else is handled by the Makefile: `make setup` installs [`uv`](https://github.com/astral-sh/uv), creates `.venv`, and syncs Python deps; `make migrate` applies the SQL migrations.
+
+Optional, only if you exercise specific surfaces:
+- `ffmpeg` + ALSA `arecord` — voice in/out via Gradium STT/TTS
+- `npx` — for the zero-LLM MCP Inspector (see [Use your own MCP client](#use-your-own-mcp-client))
+- API keys (`.env`): `OPENROUTER_API_KEY` for the live agent or re-extraction · `TAVILY_API_KEY` for web search · `GRADIUM_API_KEY` for voice. None needed for the replay demo or the UI.
 
 ### Instant demo (no API key)
 ```bash
