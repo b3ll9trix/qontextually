@@ -2,3 +2,5 @@ sqlite-web
 sqlite-vec
 requests
 python-dotenv
+llama-index-core>=0.14,<0.15
+llama-index-readers-file>=0.6,<0.7

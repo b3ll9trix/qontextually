@@ -42,6 +42,15 @@ def _ensure_vec_table(conn: sqlite3.Connection, dim: int) -> None:
         )
         """
     )
+    conn.execute(
+        f"""
+        CREATE VIRTUAL TABLE IF NOT EXISTS predicate_embeddings_vec
+        USING vec0(
+            predicate TEXT PRIMARY KEY,
+            embedding FLOAT[{dim}]
+        )
+        """
+    )
 
 
 def get_connection(

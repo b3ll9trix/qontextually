@@ -30,3 +30,11 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Dataset (cloned from HF, pulled via git-lfs; not part of this repo)
+sample_dataset/
